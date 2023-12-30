@@ -5,20 +5,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 
 @Entity
 @Table(name = "bonuses")
+@SuppressWarnings("serial")
 public class Bonus implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "bonusId")
     private Long Id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "deliveryId", referencedColumnName = "deliveryId")
