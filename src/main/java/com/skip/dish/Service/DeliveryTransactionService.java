@@ -1,20 +1,18 @@
-package Service;
+package com.skip.dish.Service;
 
-import dao.AdjustmentRepository;
-import dao.BonusRepository;
-import dao.DeliveryRepository;
-import domain.DeliveryTransaction;
-import dto.Adjustment;
-import dto.Bonus;
-import dto.Delivery;
+import com.skip.dish.dao.AdjustmentRepository;
+import com.skip.dish.dao.BonusRepository;
+import com.skip.dish.dao.DeliveryRepository;
+import com.skip.dish.domain.DeliveryTransaction;
+import com.skip.dish.dao.dto.Adjustment;
+import com.skip.dish.dao.dto.Bonus;
+import com.skip.dish.dao.dto.Delivery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class DeliveryTransactionService {

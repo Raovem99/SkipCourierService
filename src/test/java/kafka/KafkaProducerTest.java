@@ -1,6 +1,6 @@
 package kafka;
 
-import dto.Delivery;
+import com.skip.dish.dao.dto.Delivery;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.MockProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;

@@ -1,10 +1,7 @@
-package domain;
+package com.skip.dish.domain;
 
-import dto.Delivery;
+import com.skip.dish.dao.dto.Delivery;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class DeliveryTransaction {

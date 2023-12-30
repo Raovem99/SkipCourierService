@@ -1,20 +1,20 @@
-package dto;
+package com.skip.dish.dao.dto;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "adjustments")
-public class Adjustment {
+public class Adjustment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

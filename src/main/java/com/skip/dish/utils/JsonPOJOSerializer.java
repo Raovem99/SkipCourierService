@@ -1,11 +1,9 @@
-package utils;
+package com.skip.dish.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dto.Delivery;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Serializer;
-import org.apache.kafka.common.serialization.Deserializer;
 
 public class JsonPOJOSerializer<T> implements Serializer<T> {
     private final ObjectMapper objectMapper = new ObjectMapper();

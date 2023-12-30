@@ -1,7 +1,7 @@
-package Controller;
+package com.skip.dish.Controller;
 
-import Service.DeliveryTransactionService;
-import domain.DeliveryTransaction;
+import com.skip.dish.Service.DeliveryTransactionService;
+import com.skip.dish.domain.DeliveryTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

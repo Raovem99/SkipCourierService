@@ -1,4 +1,4 @@
-package exception;
+package com.skip.dish.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

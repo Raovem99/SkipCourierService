@@ -1,7 +1,7 @@
 package testApp;
 
-import Controller.CourierStatementController;
-import Service.DeliveryTransactionService;
+import com.skip.dish.Controller.CourierStatementController;
+import com.skip.dish.Service.DeliveryTransactionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

@@ -1,7 +1,6 @@
-package dao;
+package com.skip.dish.dao;
 
-import dto.Courier;
-import dto.Delivery;
+import com.skip.dish.dao.dto.Courier;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CourierRepository extends JpaRepository<Courier, Long> {

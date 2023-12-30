@@ -1,13 +1,10 @@
-package dao;
+package com.skip.dish.dao;
 
-import dto.Bonus;
-import dto.Courier;
-import dto.Delivery;
+import com.skip.dish.dao.dto.Delivery;
+import com.skip.dish.dao.dto.Bonus;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
 public interface BonusRepository extends JpaRepository<Bonus, Long> {
     List<Bonus> findBonusesByDelivery(Delivery delivery);
 }

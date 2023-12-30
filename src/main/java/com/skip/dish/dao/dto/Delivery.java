@@ -1,28 +1,21 @@
-package dto;
+package com.skip.dish.dao.dto;
 
-import domain.DeliveryTransaction;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import org.apache.kafka.clients.producer.Callback;
-import org.apache.kafka.clients.producer.RecordMetadata;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "deliveries")
-public class Delivery implements Callback {
+@SuppressWarnings("serial")
+public class Delivery implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "deliveryId")
     private Long id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "courierId", referencedColumnName = "courierId")
@@ -75,11 +68,8 @@ public class Delivery implements Callback {
     }
 
 
-    @Override
-    public void onCompletion(RecordMetadata recordMetadata, Exception e) {
 
     }
-}
 
 
 

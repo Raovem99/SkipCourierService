@@ -1,4 +1,4 @@
-package dto;
+package com.skip.dish.dao.dto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -7,11 +7,12 @@ import jakarta.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.io.Serializable;
 
 
 @Entity
 @Table(name = "couriers")
-public class Courier {
+public class Courier implements Serializable {
 
     @Id
     @javax.persistence.Id

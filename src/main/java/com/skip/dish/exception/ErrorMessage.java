@@ -1,4 +1,4 @@
-package exception;
+package com.skip.dish.exception;
 
     public class ErrorMessage {
         private final int statusCode;
