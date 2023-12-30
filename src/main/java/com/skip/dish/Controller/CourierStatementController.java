@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@ControllerAdvice
 @RequestMapping("/api/courier-statements")
 public class CourierStatementController {
 
