@@ -102,12 +102,12 @@ Database Schema Design
    - `Deliveries`: `deliveryId`, `courierId`, `createdTimestamp`, `value`.
    - `Adjustments`: `adjustmentId`, `deliveryId`, `modifiedTimestamp`, `value`.
    - `Bonuses`: `bonusId`, `deliveryId`, `modifiedTimestamp`, `value`.
-   - `CourierStatements`: `statementId`, `courierId`, `startDate`, `endDate`, `totalAmount`.
+  
 
 3. Relationships:
    - `Deliveries` is related to `Couriers` through `courierId`.
    - `Adjustments` and `Bonuses` are related to `Deliveries` through `deliveryId`.
-   - `CourierStatements` is related to `Couriers` through `courierId`.
+   
 
 Database Integration with Spring Boot
 
@@ -117,10 +117,7 @@ Database Integration with Spring Boot
 
 2. Repository Layer:
    - Implement JPA repositories for CRUD operations.
-   - Use Spring Data’s method query derivation for complex queries.
-
-3. Transaction Management:
-   - Leverage Spring's `@Transactional` annotation to manage transactions, ensuring data consistency and integrity.
+   - Use Spring Data’s method query derivation 
 
  Data Operations and Business Logic
 
@@ -129,15 +126,15 @@ Database Integration with Spring Boot
 
 2. Courier Statement Calculation:
    - Aggregate data from `Deliveries`, `Adjustments`, and `Bonuses` to calculate the weekly statement.
-   - Store the result in the `CourierStatements` table.
+   - Store the result in the `Delivery Transaction`.
 
 3. Data Retrieval for API Endpoints:
-   - Implement methods in the service layer to fetch data based on API requests, such as fetching courier statements for a given period.
+   - Implemented methods in the service layer to fetch data based on API requests, such as fetching courier statements for a given period.
 
  Error Handling and Validation
 
-- Implement error handling in the service layer to manage exceptions during database operations.
-- Validate data before persisting to the database.
+- Implemented error handling in the service layer to manage exceptions during database operations.
+
 
  Performance Considerations
 
@@ -239,8 +236,64 @@ The project includes two primary controller classes, `CourierStatementController
 The controller classes in the SkipTheDishes project are well-structured to handle specific RESTful endpoints related to courier statements and delivery transactions. Enhancements in error handling, response structuring, and security can further improve their robustness and usability.
 
 6. Error Handling and Validation:
-   - Robust error handling in service and controller layers.
-   - Validate incoming data and requests.
+   Detailed Design for Error Handling and Exceptions in the SkipTheDishes Project
+
+The effective management of errors and exceptions is crucial for maintaining the robustness and reliability of the SkipTheDishes project. This involves a structured approach to error handling across different layers of the application.
+
+1. Global Exception Handling
+
+- Implementation:
+  - Utilize `@ControllerAdvice` to create a global exception handler (`GlobalExceptionHandler`).
+  - Centralize exception handling for the entire application, ensuring consistent error responses.
+
+- Key Features:
+  - Custom error response class (`ErrorResponse`) to standardize the format of error messages.
+  - Handlers for different types of exceptions, each annotated with `@ExceptionHandler`.
+  - Use `@ResponseStatus` to set appropriate HTTP status codes based on the exception type.
+  - Log exceptions for audit and debugging purposes.
+
+ 2. Service Layer Exception Handling
+
+- Implementation:
+  - Each service method includes try-catch blocks to handle exceptions that are specific to the business logic.
+  - Throw custom exceptions that encapsulate specific error scenarios or business rule violations.
+
+3. Controller Layer Exception Handling
+
+- Implementation:
+  - Rely on `GlobalExceptionHandler` for handling general exceptions.
+  - Use `@ExceptionHandler` within controllers for handling specific exceptions related to controller logic.
+  - Ensure proper HTTP response statuses and messages are returned.
+
+- Validation Errors:
+  - Handle `MethodArgumentNotValidException` for request validation errors.
+  - Return detailed information about validation failures.
+
+ 4. Kafka Exception Handling
+
+- Consumer and Listener Exception Handling:
+  - Implement error handling within Kafka listeners (`@KafkaListener`) to manage exceptions during message consumption and processing.
+  - Log errors and decide on a retry or dead-letter queue strategy for unprocessable messages.
+
+- Producer Exception Handling:
+  - Handle exceptions in Kafka producer services (`KafkaProducerService`).
+  - Utilize callbacks and futures to handle asynchronous sending errors.
+
+5. Database and Repository Layer Exception Handling
+
+- Implementation:
+  - Wrap database operations in try-catch blocks within repository methods or service methods interacting with the database.
+  - Translate database-specific exceptions into more generic exceptions or custom-defined exceptions.
+
+ 6. Logging and Monitoring
+
+- Integrate a logging framework (like SLF4J with Logback or Log4J2).
+- Log exceptions at appropriate levels (error).
+
+
+ Conclusion
+
+A comprehensive error and exception handling strategy in the SkipTheDishes project enhances its resilience and reliability. By standardizing responses, logging critical information, and carefully managing exceptions at different application layers, the system can gracefully handle errors and provide useful feedback to users and developers. This approach also aids in maintaining and troubleshooting the application effectively.
 
  
 
