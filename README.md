@@ -95,7 +95,6 @@ Database Schema Design
    - `Deliveries`: Records each delivery event.
    - `Adjustments`: Captures adjustments made to deliveries.
    - `Bonuses`: Details bonuses associated with deliveries.
-   - `CourierStatements`: Aggregated data for courier statements.
 
 2. Table Structures:
    - `Couriers`: `courierId`, `name`, other relevant details.
